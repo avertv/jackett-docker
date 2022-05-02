@@ -1,0 +1,33 @@
+## clean docker
+#
+#  Если захотите в будущем контейнеры обновить,
+#  достаточно будет остановить их, почистить докер командой
+#  sudo docker system prune -a
+#  и снова выполнить sudo docker-compose up -d
+#
+#  При необходимости открыть порт 6002
+#  sudo iptables -I INPUT -p tcp -m tcp --dport 6002 -j ACCEPT
+#  sudo netfilter-persistent save
+#
+# sudo docker system prune -a
+## install new versions
+# cd /opt/docker-compose
+# sudo docker-compose up -d
+
+---
+version: "2"
+services:
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=1029
+      - PGID=100
+      - TZ=Europe/Minsk
+    volumes:
+      - /volume1/docker/jackett:/config
+      - /volume2/media:/media
+    ports:
+      - 6002:9117
+    restart: unless-stopped
+    network_mode: "bridge"
