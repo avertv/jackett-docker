@@ -2,6 +2,7 @@
 #
 #  Если захотите в будущем контейнеры обновить,
 #  достаточно будет остановить их, почистить докер командой
+#  sudo docker-compose stop или sudo docker stop [OPTIONS] CONTAINER [CONTAINER...]
 #  sudo docker system prune -a
 #  и снова выполнить sudo docker-compose up -d
 #
