@@ -25,8 +25,8 @@ services:
       - PGID=100
       - TZ=Europe/Minsk
     volumes:
-      - /volume1/docker/jackett:/config
-      - /volume2/media:/media
+      - ./volume1/docker/jackett:/config
+      - ./volume2/media:/media
     ports:
       - 6002:9117
     restart: unless-stopped
